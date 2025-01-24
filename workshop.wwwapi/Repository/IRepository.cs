@@ -15,6 +15,7 @@ namespace workshop.wwwapi.Repository
         Task<IEnumerable<T>> GetWithThenIncludes(params Func<IQueryable<T>, IQueryable<T>>[] includes);
         Task<T> GetByIdWithIncludes(int id, params Expression<Func<T, object>>[] includes);
         Task<T> GetByIdWithThenIncludes(int id, params Func<IQueryable<T>, IQueryable<T>>[] includes);
+        Task<IEnumerable<T>> InsertAll(IEnumerable<T> entities);
 
     }
 }

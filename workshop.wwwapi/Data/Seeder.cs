@@ -41,9 +41,49 @@ namespace workshop.wwwapi.Data
             new Appointment { Id = 10, Booking = new DateTime(2025, 1, 14, 19, 0, 0, DateTimeKind.Utc), DoctorId = 5, PatientId = 10 }
         };
 
+        private List<Medicine> _medicines = new List<Medicine>()
+        {
+            new Medicine { Id = 1, Name = "Aspirin" },
+            new Medicine { Id = 2, Name = "Paracetamol" },
+            new Medicine { Id = 3, Name = "Ibuprofen" },
+            new Medicine { Id = 4, Name = "Penicillin" },
+            new Medicine { Id = 5, Name = "Amoxicillin" }
+        };
+
+        private List<Prescription> _prescriptions = new List<Prescription>()
+        {
+            new Prescription { Id = 1, AppointmentId = 1},
+            new Prescription { Id = 2, AppointmentId = 2},
+            new Prescription { Id = 3, AppointmentId = 3},
+            new Prescription { Id = 4, AppointmentId = 4},
+            new Prescription { Id = 5, AppointmentId = 5},
+            new Prescription { Id = 6, AppointmentId = 6},
+            new Prescription { Id = 7, AppointmentId = 7},
+            new Prescription { Id = 8, AppointmentId = 8}
+        };
+
+        private List<MedicinePresctiption> _medicinePresctiptions = new List<MedicinePresctiption>()
+                    {
+            new MedicinePresctiption {Id = 1, MedicineId = 1, PrescriptionId = 1, Notes = "Every day"},
+            new MedicinePresctiption {Id = 2, MedicineId = 2, PrescriptionId = 2, Notes = "Never forget"},
+            new MedicinePresctiption {Id = 3,  MedicineId = 3, PrescriptionId = 3,Notes = "Every 4 hours"},
+            new MedicinePresctiption {Id = 4,  MedicineId = 4, PrescriptionId = 4,Notes = "Every 2 minutes"},
+            new MedicinePresctiption {Id = 5,  MedicineId = 5, PrescriptionId = 5,Notes = "Dont actually take it"},
+            new MedicinePresctiption {Id = 6,  MedicineId = 1, PrescriptionId = 6,Notes = "Only for reselling"},
+            new MedicinePresctiption {Id = 7,  MedicineId = 2, PrescriptionId = 7,Notes = "Twice a year"},
+            new MedicinePresctiption {Id = 8,  MedicineId = 3, PrescriptionId = 8,Notes = "Every day"}
+        };
+
         public List<Patient> Patients { get { return _patients; } }
         public List<Doctor> Doctors { get { return _doctors; } }
         public List<Appointment> Appointments { get { return _appointments; } }
+
+        public List<Medicine> Medicines { get { return _medicines; } }
+        public List<Prescription> Prescriptions { get { return _prescriptions; } }
+        public List<MedicinePresctiption> MedicinePresctiptions
+        {
+            get { return _medicinePresctiptions; }
+        }
     }
 }
 

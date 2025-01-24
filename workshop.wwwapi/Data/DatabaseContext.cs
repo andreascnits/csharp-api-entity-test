@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.Extensions.Options;
+using System;
 using System.Diagnostics;
 using workshop.wwwapi.Models;
 
@@ -25,10 +26,17 @@ namespace workshop.wwwapi.Data
             modelBuilder.Entity<Appointment>().HasKey(a => new { a.PatientId, a.DoctorId });
             modelBuilder.Entity<Appointment>().HasKey(a => a.Id);
 
+            modelBuilder.Entity<Medicine>()
+                .HasMany(p => p.Prescription).WithMany(p => p.Medicines)
+                    .UsingEntity<MedicinePresctiption>();
 
             modelBuilder.Entity<Doctor>().HasData(seeder.Doctors);
             modelBuilder.Entity<Patient>().HasData(seeder.Patients);
             modelBuilder.Entity<Appointment>().HasData(seeder.Appointments);
+
+            modelBuilder.Entity<Medicine>().HasData(seeder.Medicines);
+            modelBuilder.Entity<Prescription>().HasData(seeder.Prescriptions);
+            modelBuilder.Entity<MedicinePresctiption>().HasData(seeder.MedicinePresctiptions);
 
         }
 
@@ -44,5 +52,8 @@ namespace workshop.wwwapi.Data
         public DbSet<Patient> Patients { get; set; }
         public DbSet<Doctor> Doctors { get; set; }
         public DbSet<Appointment> Appointments { get; set; }
+        public DbSet<Medicine> Medicines { get; set; }
+        public DbSet<Prescription> Prescriptions { get; set; }
+        public DbSet<MedicinePresctiption> MedicinePresctiptions { get; set; }
     }
 }
